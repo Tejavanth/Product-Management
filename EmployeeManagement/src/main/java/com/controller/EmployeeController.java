@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.GET;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bean.Employee;
@@ -25,6 +30,8 @@ public class EmployeeController {
 	private EmployeeServices employeeService;
 
 	@RequestMapping(value = "/")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
 	public ModelAndView listContact(ModelAndView model) throws IOException {
 		Set<Employee> employees = employeeService.getAllEmployees();
 		logger.info("Adding Employee Objects");
@@ -36,6 +43,7 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	
 	public ModelAndView newContact(ModelAndView model) {
 		Employee employee = new Employee();
 		logger.info("Creating a new Employee");
@@ -50,14 +58,23 @@ public class EmployeeController {
 		employeeService.addEmp(employee);
 		return new ModelAndView("redirect:/");
 	}
-
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public ModelAndView updateContact(@ModelAttribute int id, @ModelAttribute Employee employee) {
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ModelAndView updateContact(@RequestParam int id, @ModelAttribute Employee employee) {
 		ModelAndView model = new ModelAndView();
 		logger.info("Update an Employee");
 		model.setViewName("update");
+		model.addObject("emplyee", employee);
 		employeeService.updateEmployee(id, employee);
 		return new ModelAndView("redirect:/");
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView editContact(@RequestParam int id, @ModelAttribute Employee employee) {
+		ModelAndView model = new ModelAndView();
+		logger.info("Update an Employee");
+		model.setViewName("update");
+		return model;
 	}
 
 	@RequestMapping(value = "/delete")
@@ -68,5 +85,6 @@ public class EmployeeController {
 		
 		return new ModelAndView("redirect:/");
 	}
+	
 
 }

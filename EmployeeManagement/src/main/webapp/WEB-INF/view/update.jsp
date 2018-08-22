@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Update Employee</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -20,7 +21,7 @@
 	<div align="center">
 		<h1>Update Employee</h1>
 		
-		<form:form action="update" method="post" modelAttribute="employee">
+		<form:form action="update" method="POST" modelAttribute="employee">
 		<table>
 			
 			<tr>
@@ -70,7 +71,7 @@
 			<tr>
 			
 				<td colspan="2" align="left"><input type="submit" value="Update" class="btn btn-success"></td>
-				<td colspan="2" align="right"><a href="/SpringMvcJdbcTemplate"><input type="button" class="btn btn-success"value="Home"></a></td>
+				
 			</tr>
 		</table>
 		</form:form>

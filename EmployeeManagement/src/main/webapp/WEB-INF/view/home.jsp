@@ -6,6 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -51,8 +52,8 @@
 					
 					<td>
 					
-						<a href="update?eid=${emp.id}" class="edit" data-toggle="modal">
-						<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Update</a>
+						<a href="edit?id=${emp.id}" class="edit" data-toggle="modal">
+						<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Edit</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="delete?eid=${emp.id}" class="delete" data-toggle="modal">
 						<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
