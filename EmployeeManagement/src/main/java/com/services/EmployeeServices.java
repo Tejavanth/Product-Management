@@ -10,8 +10,5 @@ public interface EmployeeServices {
 	public Set<Employee> getAllEmployees();
 	public void updateEmployee(int id, Employee e);
 	public void deleteEmployee(int id);
-	
-
-	
-	
+	public Employee getEmployee(int employeeid); 
 }

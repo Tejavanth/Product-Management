@@ -56,6 +56,15 @@ public class EmployeeServiceImpl implements EmployeeServices{
 		emp.setDoj(e.getDoj());
 		
 	}
+	
+	public Employee getEmployee(int employeeid) {
+		Employee e = new Employee();
+		for (Employee temp : employee) {
+			if (temp.getId() == employeeid)
+				e = temp;
+		}
+		return e;
+	}
 
 	@Override
 	public void deleteEmployee(int id) {

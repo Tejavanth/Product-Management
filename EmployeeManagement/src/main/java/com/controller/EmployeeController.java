@@ -70,10 +70,13 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView editContact(@RequestParam int id, @ModelAttribute Employee employee) {
-		ModelAndView model = new ModelAndView();
-		logger.info("Update an Employee");
-		model.setViewName("update");
+	public ModelAndView editContact(HttpServletRequest request) {
+		
+		logger.info("In Edit method of Employee");
+		int employeeid = Integer.parseInt(request.getParameter("id"));
+		Employee employee = employeeService.getEmployee(employeeid);
+		ModelAndView model = new ModelAndView("update");
+		model.addObject("employee", employee);
 		return model;
 	}
 
