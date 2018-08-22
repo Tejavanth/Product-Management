@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Set;
 
 import com.bean.Employee;
+import com.exception.DuplicateIdException;
 import com.services.EmployeeServiceImpl;
 import com.services.EmployeeServices;
 
@@ -21,7 +22,12 @@ public class EmployeeImplTest extends TestCase {
 	}
 
 	public void testAddEmployee() throws ParseException {
-		employeeServices.addEmp(createEmployee());
+		try {
+			employeeServices.addEmp(createEmployee());
+		} catch (DuplicateIdException e) {
+			e.getMessage();
+		}
+		
 	}
 
 	public void testGetAllEmployees() {
@@ -32,7 +38,7 @@ public class EmployeeImplTest extends TestCase {
 		assertEquals(101, employee.getId());
 
 	}
-
+	
 	public void testDeleteEmployee() {
 
 		employeeServices.deleteEmployee(103);

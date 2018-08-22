@@ -8,6 +8,7 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 import com.bean.Employee;
+import com.exception.DuplicateIdException;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeServices{
@@ -30,9 +31,15 @@ public class EmployeeServiceImpl implements EmployeeServices{
 	}
 	
 	@Override
-	public void addEmp(Employee e) {
+	public void addEmp(Employee e) throws DuplicateIdException{
 		
+		for (Employee temp : employee) {
+			if (temp.getId() == e.getId()) {
+				throw new DuplicateIdException("Id already exists.");
+			}
+		}
 		employee.add(e);
+		
 	}
 
 	@Override

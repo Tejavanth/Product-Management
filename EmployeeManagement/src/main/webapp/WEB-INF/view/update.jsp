@@ -21,7 +21,7 @@
 	<div align="center">
 		<h1>Update Employee</h1>
 		
-		<form:form action="update" method="POST" modelAttribute="employee">
+		<form:form action="update" method="POST" modelAttribute="employee" >
 		<table>
 			
 			<tr>
@@ -75,6 +75,7 @@
 			</tr>
 		</table>
 		</form:form>
+		
 		</div>
 </body>
 </html>

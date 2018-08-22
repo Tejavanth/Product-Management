@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"  isErrorPage="True"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
 	"http://www.w3.org/TR/html4/loose.dtd">
@@ -100,7 +100,7 @@
 		<h1>New Employee</h1>
 		<form:form action="save" method="post" modelAttribute="employee"
 			name="form1"
-			onsubmit="return  validatedate(document.form1.doj) ">
+			onsubmit="return  (validatedate(document.form1.doj) && validateEmail(document.form1.email))">
 			<table>
 
 				<tr>
@@ -111,6 +111,8 @@
 
 							<td><form:input path="id" required="required"
 									class="form-control" /></td>
+							<td> &nbsp;&nbsp;${errormessage }</td>
+							<td>
 						</div>
 					</div>
 				</tr>
@@ -128,7 +130,7 @@
 						<div class="form-group">
 							<td>Email:</td>
 							<td><form:input path="email" required="required"
-									class="form-control" onclick="validateEmail(document.form1.email)"/></td>
+									class="form-control" /></td>
 						</div>
 					</div>
 				</tr>
