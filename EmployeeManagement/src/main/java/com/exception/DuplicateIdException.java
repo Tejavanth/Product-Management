@@ -1,6 +1,6 @@
 package com.exception;
 
-public class DuplicateIdException extends Exception{
+public class DuplicateIdException extends RuntimeException{
 	
 	public DuplicateIdException(String message) {
 		super (message);

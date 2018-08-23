@@ -31,7 +31,6 @@ public class EmployeeController {
 	private EmployeeServices employeeService;
 
 	@RequestMapping(value = "/")
-
 	public ModelAndView listContact(ModelAndView model) throws IOException {
 		Set<Employee> employees = employeeService.getAllEmployees();
 		logger.info("Adding Employee Objects");
@@ -43,7 +42,6 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
-
 	public ModelAndView newContact(ModelAndView model) {
 		Employee employee = new Employee();
 		logger.info("Creating a new Employee");
